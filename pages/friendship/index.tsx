@@ -4,13 +4,16 @@ import styles from "../../styles/Home.module.css";
 
 // Types
 import { GetServerSideProps } from "next";
+import { ICenterSection, IFriendship } from "../../types/friendship/types";
 
 // Misc
 import MainLayout from "../../layout/MainLayout/MainLayout";
+import CenterSection from "../../components/CenterSection";
 
-const Friendship = (props: any) => {
+const Friendship = (props: IFriendship) => {
   const { items, meta } = props.res?.data;
-  console.log(props.res.data);
+
+  let c = 1;
 
   return (
     <div className={styles.container}>
@@ -22,7 +25,19 @@ const Friendship = (props: any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <MainLayout>friendship</MainLayout>
+        <MainLayout>
+          {items.map(
+            (item: ICenterSection) =>
+              item.image &&
+              c++ && (
+                <CenterSection
+                  key={item.title}
+                  reverse={c % 2 === 1}
+                  {...item}
+                />
+              )
+          )}
+        </MainLayout>
       </main>
       <footer className={styles.footer}>
         <a

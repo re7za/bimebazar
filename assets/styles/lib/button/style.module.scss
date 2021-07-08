@@ -1,0 +1,17 @@
+@import "../../_variables.sass";
+
+.button {
+  border: none;
+  outline: none;
+  background-color: $primary;
+  padding: 10px 14px;
+  white-space: nowrap;
+  transition: 100ms;
+  font-size: 0.95rem;
+  &:hover {
+    background-color: $primary-light;
+  }
+  &:active {
+    background-color: $primary;
+  }
+}

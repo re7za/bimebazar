@@ -1,0 +1,28 @@
+@import "../../_variables.sass";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: #fff;
+  @media screen and (min-width: $sm) {
+    padding: 16px 64px;
+  }
+  @media screen and (min-width: $md) {
+    padding: 16px 12%;
+  }
+  .buttons {
+    display: flex;
+    column-gap: 16px;
+  }
+  .participationBtn {
+    display: none;
+    @media screen and (min-width: $sm) {
+      display: block;
+    }
+  }
+  .login {
+    background-color: transparent;
+  }
+}

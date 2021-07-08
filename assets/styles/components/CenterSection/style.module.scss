@@ -24,7 +24,9 @@
     }
   }
   .reverse {
-    order: 1;
+    @media screen and (min-width: $md) {
+      order: 1;
+    }
   }
   .content {
     width: 80%;
@@ -41,7 +43,8 @@
       margin: 8px 0;
       @media screen and (min-width: $md) {
         margin: 24px 0 16px;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        font-weight: 600;
       }
     }
     .paragraph {

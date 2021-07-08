@@ -1,0 +1,31 @@
+@import "../../_variables.sass";
+
+.footer {
+  background-color: #000;
+  width: 100%;
+  color: #fff;
+  .content {
+    text-align: center;
+    margin: 0px auto;
+    padding: 40px 32px;
+    max-width: 516px;
+    .logo {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 8px 0;
+      @media screen and (min-width: $md) {
+        margin: 24px 0 16px;
+        font-size: 1.2rem;
+      }
+    }
+    .paragraph {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin: 8px 0 24px;
+      @media screen and (min-width: $md) {
+        margin: 12px 0 24px;
+        font-size: 1rem;
+      }
+    }
+  }
+}

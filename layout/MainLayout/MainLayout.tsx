@@ -2,6 +2,8 @@
 
 import React from "react";
 
+import style from "../../assets/styles/layout/mainLayout/style.module.scss";
+
 // Misc
 import Navbar from "../../components/Navbar";
 
@@ -15,7 +17,7 @@ function MainLayout(props: IMainLayout) {
   return (
     <>
       <Navbar />
-      {children}
+      <div className={style.layout}>{children}</div>
     </>
   );
 }

@@ -8,6 +8,7 @@
   white-space: nowrap;
   transition: 100ms;
   font-size: 0.95rem;
+  max-width: max-content;
   &:hover {
     background-color: $primary-light;
   }

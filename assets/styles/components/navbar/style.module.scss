@@ -12,17 +12,23 @@
   @media screen and (min-width: $md) {
     padding: 16px 12%;
   }
+  .logo {
+    margin: 0;
+  }
   .buttons {
     display: flex;
     column-gap: 16px;
   }
   .participationBtn {
     display: none;
-    @media screen and (min-width: $sm) {
+    @media screen and (min-width: $md) {
       display: block;
     }
   }
   .login {
     background-color: transparent;
+    &:hover {
+      background-color: $shadow-light;
+    }
   }
 }

@@ -15,9 +15,11 @@ const Navbar = () => {
   return (
     <>
       <div className={style.navbar}>
-        <div>بیمه بازار</div>
+        <h2 className={style.logo}>بیمه بازار</h2>
         <div className={style.buttons}>
-          <Button className={style.participationBtn}>شرکت در مسابقه</Button>
+          <Button className={style.participationBtn} onClick={loginModal.open}>
+            شرکت در مسابقه
+          </Button>
           <Button className={style.login} onClick={loginModal.open}>
             ورود / ثبت نام
           </Button>

@@ -9,8 +9,9 @@
   transition: 100ms;
   font-size: 0.95rem;
   max-width: max-content;
+  transition: 200ms;
   &:hover {
-    background-color: $primary-light;
+    background-color: $primary-dark;
   }
   &:active {
     background-color: $primary;

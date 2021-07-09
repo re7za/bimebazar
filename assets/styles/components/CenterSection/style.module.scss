@@ -61,9 +61,13 @@
       .btn {
         padding: 8px 16px;
         font-size: 0.85rem;
+        max-width: unset;
+        width: 100%;
+        font-weight: 600;
         @media screen and (min-width: $md) {
           padding: 10px 16px;
-          font-size: 1rem;
+          font-size: 0.9rem;
+          max-width: max-content;
         }
       }
     }

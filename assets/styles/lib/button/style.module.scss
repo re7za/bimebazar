@@ -17,3 +17,12 @@
     background-color: $primary;
   }
 }
+.disabled {
+  background-color: #ddd;
+  &:hover {
+    background-color: #ddd;
+  }
+  &:active {
+    background-color: #ddd;
+  }
+}

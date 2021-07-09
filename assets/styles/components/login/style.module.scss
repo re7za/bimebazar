@@ -20,6 +20,13 @@
     margin-bottom: 24px;
     color: $text-light;
   }
+  .prevBtnBox {
+    padding: 8px 0px;
+    .prevBtn {
+      background-color: $secondary-light;
+      font-size: 0.85rem;
+    }
+  }
   .input {
     margin: 32px 0;
     display: flex;
@@ -29,5 +36,30 @@
   .submitBtn {
     max-width: unset;
     width: 100%;
+  }
+  .buttonsRow {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+    .timer {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .submitBtn {
+      max-width: unset;
+      width: 100%;
+    }
+    .resendBtn {
+      max-width: unset;
+      width: 100%;
+      background-color: #ddd;
+      &:hover {
+        background-color: #ccc;
+      }
+      &:active {
+        background-color: #ddd;
+      }
+    }
   }
 }

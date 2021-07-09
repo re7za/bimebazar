@@ -13,11 +13,13 @@ const Modal = (props: ModalProps) => {
   const { open, close, onClose, children, title } = props;
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(open);
 
-  console.log(children);
-
   const handleCloseClick = () => {
     close();
     if (onClose) onClose();
+  };
+
+  const handlePaperClick = (e: any) => {
+    e.stopPropagation();
   };
 
   useEffect(() => {
@@ -25,8 +27,8 @@ const Modal = (props: ModalProps) => {
   }, [open]);
 
   const modalContent = (
-    <div className={style.backdrop}>
-      <div className={style.paper}>
+    <div className={style.backdrop} onClick={close}>
+      <div className={style.paper} onClick={handlePaperClick}>
         <div className={style.headLine}>
           <h1 className={style.header3}>{title}</h1>
           <div>

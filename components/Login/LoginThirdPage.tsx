@@ -2,16 +2,43 @@ import React, { useState } from "react";
 
 import style from "../../assets/styles/components/login/style.module.scss";
 
+// Services
+import { sendUserName } from "../../services/authentication";
+
 // Misc
 import Button from "../../lib/Button";
 import TextInput from "../../lib/TextInput";
+import Loader from "../../lib/loader";
 
-const LoginThirdPage = () => {
-  const [confirmCode, setConfirmCode] = useState("");
+interface ILoginSuccessPage {
+  done: () => void;
+}
+
+const LoginThirdPage = (props: ILoginSuccessPage) => {
+  const { done } = props;
+
+  const [nickname, setConfirmCode] = useState("");
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: any) => {
     setConfirmCode(e.target.value);
-    console.log(confirmCode);
+  };
+
+  const handleSubmit = async () => {
+    setError(false);
+    setLoading(true);
+    const res = await sendUserName(nickname).catch((err) => {
+      console.error(err);
+      setError(true);
+    });
+    if (res?.status?.code === 200) {
+      done();
+    } else {
+      console.error("There is a problem!");
+      setError(true);
+    }
+    setLoading(false);
   };
 
   return (
@@ -30,9 +57,18 @@ const LoginThirdPage = () => {
           onChange={handleInputChange}
         />
       </div>
-      <Button disabled={!confirmCode} className={style.submitBtn}>
-        تکمیل ثبت نام
-      </Button>
+      {error && <div className={style.error}>خطایی رخ داده است!</div>}
+      {loading ? (
+        <Loader />
+      ) : (
+        <Button
+          disabled={nickname.length > 3}
+          className={style.submitBtn}
+          onClick={handleSubmit}
+        >
+          تکمیل ثبت نام
+        </Button>
+      )}
     </div>
   );
 };

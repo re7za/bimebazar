@@ -5,6 +5,9 @@ import styles from "../../styles/Home.module.css";
 import { GetServerSideProps } from "next";
 import { ICenterSection, IFriendship } from "../../types/friendship/types";
 
+// Services
+import { fetchFriendship } from "../../services/friendship";
+
 // Misc
 import MainLayout from "../../layout/MainLayout/MainLayout";
 import CenterSection from "../../components/CenterSection";
@@ -46,11 +49,7 @@ const Friendship = (props: IFriendship) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const res = await fetch(
-    "https://bimebazar.com/api/super_hero_landing/?main_type=friendship-landing"
-  )
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
+  const res = await fetchFriendship();
 
   return {
     props: {

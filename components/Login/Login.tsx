@@ -7,8 +7,9 @@ import style from "../../assets/styles/components/login/style.module.scss";
 import FirstPage from "./LoginFirstPage";
 import SecondPage from "./LoginSecondPage";
 import ThirdPage from "./LoginThirdPage";
+import SuccessPage from "./LoginSuccessPage";
 
-type LoginType = "first" | "second" | "third";
+type LoginType = "first" | "second" | "third" | "success";
 
 const Login = () => {
   const [currentPage, setCurrentPage] = useState<LoginType>("first");
@@ -30,6 +31,10 @@ const Login = () => {
     setPhoneNumber(num);
   };
 
+  const done = () => {
+    setCurrentPage("success");
+  };
+
   const pages = {
     first: () => (
       <FirstPage
@@ -45,7 +50,8 @@ const Login = () => {
         phoneNumber={phoneNumber}
       />
     ),
-    third: () => <ThirdPage previous={prevPage} />,
+    third: () => <ThirdPage done={done} />,
+    success: () => <SuccessPage />,
   };
 
   return <div className={style.login}>{pages[currentPage]()}</div>;

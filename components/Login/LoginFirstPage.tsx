@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import style from "../../assets/styles/components/login/style.module.scss";
+
+// Services
+import { sendNumber } from "../../services/authentication";
 
 // Misc
 import Button from "../../lib/Button";
 import TextInput from "../../lib/TextInput";
+import Loader from "../../lib/loader";
 
 interface ILoginFirstPage {
   next: () => void;
@@ -14,14 +18,28 @@ interface ILoginFirstPage {
 
 const LoginFirstPage = (props: ILoginFirstPage) => {
   const { next, phoneNumber, handlePhoneNumberChange } = props;
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleInputChange = (e: any) => {
     handlePhoneNumberChange(e.target.value);
+    setError(false);
   };
 
-  const handleSubmit = () => {
-    next();
-    console.log(phoneNumber);
+  const handleSubmit = async () => {
+    setError(false);
+    setLoading(true);
+    const res = await sendNumber(phoneNumber).catch((err) => {
+      console.error(err);
+      setError(true);
+    });
+    if (res?.status?.code === 200) {
+      next();
+    } else {
+      console.error("There is a problem!");
+      setError(true);
+    }
+    setLoading(false);
   };
 
   return (
@@ -35,18 +53,22 @@ const LoginFirstPage = (props: ILoginFirstPage) => {
         <TextInput
           type="text"
           name="phoneNumber"
-          autoComplete="off"
           placeholder="مثلا 099300000000"
           onChange={handleInputChange}
         />
       </div>
-      <Button
-        disabled={phoneNumber.length !== 11}
-        className={style.submitBtn}
-        onClick={handleSubmit}
-      >
-        تایید شماره موبایل
-      </Button>
+      {error && <div className={style.error}>خطایی رخ داده است!</div>}
+      {loading ? (
+        <Loader />
+      ) : (
+        <Button
+          disabled={phoneNumber.length !== 11}
+          className={style.submitBtn}
+          onClick={handleSubmit}
+        >
+          تایید شماره موبایل
+        </Button>
+      )}
     </div>
   );
 };

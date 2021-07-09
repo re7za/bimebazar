@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 
 // Types
@@ -14,7 +13,7 @@ import Footer from "../../components/Footer";
 const Friendship = (props: IFriendship) => {
   const { items, meta } = props.res?.data;
 
-  let c = 1;
+  let sectionCounter = 1;
 
   return (
     <div className={styles.container}>
@@ -30,10 +29,10 @@ const Friendship = (props: IFriendship) => {
           {items.map(
             (item: ICenterSection) =>
               item.image &&
-              c++ && (
+              sectionCounter++ && (
                 <CenterSection
                   key={item.title}
-                  reverse={c % 2 === 1}
+                  reverse={sectionCounter % 2 === 1}
                   {...item}
                 />
               )
@@ -41,6 +40,7 @@ const Friendship = (props: IFriendship) => {
         </MainLayout>
       </main>
       <Footer />
+      <div id="modal-root"></div>
     </div>
   );
 };

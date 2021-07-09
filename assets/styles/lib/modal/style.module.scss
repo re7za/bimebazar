@@ -1,0 +1,46 @@
+@import "../../_variables.sass";
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  .paper {
+    background: white;
+    min-width: 300px;
+    min-height: 300px;
+    .headLine {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      .closeBtn {
+        font-size: 1.4rem;
+        background-color: transparent;
+        border-radius: 50%;
+        color: $text;
+        &:hover {
+          background-color: #fff;
+          color: $text-light;
+        }
+        &:active {
+          color: $text;
+        }
+      }
+      .header3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.6;
+        margin: 0px;
+      }
+    }
+    .children {
+      padding: 8px 24px 24px;
+    }
+  }
+}

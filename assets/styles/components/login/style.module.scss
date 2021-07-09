@@ -1,0 +1,33 @@
+@import "../../_variables.sass";
+
+.login {
+  @media screen and(min-width: $sm) {
+    min-width: 450px;
+  }
+  .header1 {
+    margin: 0;
+    margin-bottom: 32px;
+  }
+  .header3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .paragraph {
+    font-size: 0.9rem;
+    margin: 0;
+    margin-bottom: 24px;
+    color: $text-light;
+  }
+  .input {
+    margin: 32px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+  }
+  .submitBtn {
+    max-width: unset;
+    width: 100%;
+  }
+}

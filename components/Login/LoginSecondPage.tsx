@@ -62,6 +62,7 @@ const LoginSecondPage = (props: ILoginSecondPage) => {
       }
     );
     if (res?.status?.code === 200) {
+      document.cookie = `token=${res.cookie}; path=/`;
       next();
     } else {
       console.error("There is a problem!");

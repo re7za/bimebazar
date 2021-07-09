@@ -7,6 +7,7 @@ import { ICenterSection, IFriendship } from "../../types/friendship/types";
 
 // Services
 import { fetchFriendship } from "../../services/friendship";
+import { getUser } from "../../services/user";
 
 // Misc
 import MainLayout from "../../layout/MainLayout/MainLayout";
@@ -15,6 +16,8 @@ import Footer from "../../components/Footer";
 
 const Friendship = (props: IFriendship) => {
   const { items, meta } = props.res?.data;
+
+  console.log(props);
 
   let sectionCounter = 1;
 
@@ -48,7 +51,8 @@ const Friendship = (props: IFriendship) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const user = await getUser(req.cookies.token);
   const res = await fetchFriendship();
 
   return {
